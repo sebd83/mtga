@@ -32,13 +32,17 @@ def get_data_location():
     return {
         "darwin": get_darwin_data_location,
         "win32": get_win_data_location,
+        "linux": get_raspberry_data_location,
     }[current_os]()
 
 def get_darwin_data_location():
     return os.path.join(
         os.path.expanduser("~"),
-        "Library/Application Support/com.wizards.mtga/Downloads/Data",
+        "Repository/GitHub/npm-magicarena-deckcollectioncompare/test_data", # custom location for my mac
     )
+
+def get_raspberry_data_location():
+    return "/dropin" # custom linux location
 
 def get_win_data_location():
     try:
